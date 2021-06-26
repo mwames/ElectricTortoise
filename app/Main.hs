@@ -32,13 +32,8 @@ appLoop renderer = do
   
   rendererDrawColor renderer $= V4 0 0 255 255
   clear renderer
+  -- Draw
+  
+  -- Stop Draw
   present renderer
   unless qPressed (appLoop renderer)
-
-eventIsQPress :: Event -> Bool
-eventIsQPress event = 
-  case eventPayload event of
-    KeyboardEvent keyboardEvent ->
-      keyboardEventKeyMotion keyboardEvent == Pressed &&
-      keysymKeycode (keyboardEventKeysym keyboardEvent) == KeycodeQ
-    _ -> False
